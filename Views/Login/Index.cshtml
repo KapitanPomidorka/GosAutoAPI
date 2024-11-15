@@ -1,0 +1,25 @@
+﻿@model Domain.ViewModels.AuthViewModel;
+
+@{
+    ViewData["Title"] = "Авторизация";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Авторизация</h1>
+</div>
+<div class="register-form">
+    <form method="post">
+        <p>
+            <label>Имя пользователя</label>
+            <input class="form-input" type="text" name="username" value="@Model.UserName" />
+            <div class="error">@Html.ValidationMessageFor(m => m.UserName)</div>
+        </p>
+        <p>
+            <label>Пароль</label>
+            <input class="form-input" type="password" name="Password" value="" />
+            <div class="error">@Html.ValidationMessageFor(m => m.Password)</div>
+        </p>
+        <a href="Register/Index.cshtml">Нет аккаунта?</a>
+        <button>Войти</button>
+    </form>
+</div>

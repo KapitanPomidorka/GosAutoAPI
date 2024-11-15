@@ -1,0 +1,32 @@
+﻿@model Domain.ViewModels.RegisterViewModel;
+
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Регистрация</h1>
+</div>
+<div class="register-form">
+    <form method="post"> 
+        <p>
+            <label>Имя пользователя</label>
+            <input class="form-input" type="text" name="username" value="@Model.UserName" />
+            <div class="error">@Html.ValidationMessageFor(m => m.UserName)</div>
+        </p>
+        <p>
+            <label>Пароль</label>
+            <input class="form-input" type="password" name="Password" value="" />
+            <div class="error">@Html.ValidationMessageFor(m => m.Password)</div>
+            <span class="hint">
+                Пароль должен быть:<br />
+                - Минимум 10 символов<br />
+                - Хотя бы одна маленькая буква<br />
+                - Хотя бы одна большая буква<br />
+                - Хотя бы один символ из !&amp;#$%^&*-<br />
+            </span>
+        </p>
+        <a href="Login/Index.cshtml">Есть аккаунт?</a>
+        <button>Зарегистрироваться</button>
+    </form>
+</div>

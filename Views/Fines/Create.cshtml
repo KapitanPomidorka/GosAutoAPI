@@ -1,0 +1,45 @@
+﻿@model Domain.Contracts.Requests.Fine.FineRequestCreate
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Создание</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Описание штрафа</label>
+                <textarea asp-for="Description" class="form-control" rows="10" cols="45"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fines" class="control-label">Сумма штрафа</label>
+                <input asp-for="Fines" class="form-control" />
+                <span asp-validation-for="Fines" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsPaid" /> Оплачен
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DriverId" class="control-label">Водитель</label>
+                <select asp-for="DriverId" class="form-control" asp-items="ViewBag.DriverId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

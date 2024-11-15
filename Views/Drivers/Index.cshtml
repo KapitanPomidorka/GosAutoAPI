@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Domain.Contracts.Responses.Driver.DriverResponseGetAll>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список зарегистрированных водителей</h1>
+
+<p>
+    <a asp-action="Create">Добавить водителя</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Имя
+            </th>
+            <th>
+               Номера документов
+            </th>
+            <th>
+                Описание
+            </th>
+            <th>
+               Сумма неоплаченных штрафов
+            </th>
+            <th>
+               Количество штрафов
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@if(Model != null)
+        {
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberDocuments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forfeit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountForfeit)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Посмотреть</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr>
+        }
+}
+    </tbody>
+</table>

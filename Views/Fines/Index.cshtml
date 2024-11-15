@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Domain.Contracts.Responses.Fine.FineResponseGetAll>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Список штрафов</h1>
+<p>
+    <a asp-action="Create">Добавить штраф</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               Описание штрафа
+            </th>
+            <th>
+                Сумма штрафа
+            </th>
+            <th>
+                Оплачено
+            </th>
+            <th>
+                Водитель
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@if(Model != null)
+        {
+        @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fines)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Редактировать</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Посмотреть</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+            </td>
+        </tr> 
+        }
+}
+    </tbody>
+</table>

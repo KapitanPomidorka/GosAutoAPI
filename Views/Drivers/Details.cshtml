@@ -1,0 +1,47 @@
+﻿@model Domain.Contracts.Responses.Driver.DriverResponseGetById
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.NumberDocuments)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+           Имя
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            Номер документа
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumberDocuments)
+        </dd>
+        <dt class = "col-sm-2">
+           Описание
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            Сумма неоплаченных штрафов
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Forfeit)
+        </dd>
+        <dt class = "col-sm-2">
+           Количество штрафов
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CountForfeit)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Редактировать</a> |
+    <a asp-action="Index">Назад к списку</a>
+</div>

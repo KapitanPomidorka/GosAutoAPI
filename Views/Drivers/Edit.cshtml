@@ -1,0 +1,51 @@
+﻿@model Domain.Contracts.Requests.Driver.DriverRequestUpdate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редактирование</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Имя</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberDocuments" class="control-label">Номер документа</label>
+                <input asp-for="NumberDocuments" class="form-control" />
+                <span asp-validation-for="NumberDocuments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label">Описание</label>
+                <textarea asp-for="Description" class="form-control" rows="10" cols="45"></textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Forfeit" class="control-label">Сумма неоплаченных штрафов</label>
+                <input asp-for="Forfeit" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="CountForfeit" class="control-label">Количество штрафов</label>
+                <input asp-for="CountForfeit" class="form-control" readonly/>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
